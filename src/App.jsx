@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Search from "./components/Search.jsx";
+import Table from "./components/Table.jsx";
+import Sort from "./components/Sort.jsx";
+import Filter from "./components/Filter.jsx";
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
@@ -16,7 +19,7 @@ function App() {
       try {
         const url = `${base_url}?page=${page}&sort=${sort.sort},${sort.order}&department=${department}&search=${search}`;
         const { data } = await axios.get(url);
-        setObj(data.data);
+        setObj(data);
       } catch (error) {
         console.log("Error occurred while getting data", error.message);
       }
@@ -27,7 +30,7 @@ function App() {
 
   return (
     <>
-      <div className=" h-screen w-full bg-[#A28089] text-white p-8">
+      <div className=" h-screen w-full bg-[#A28089] text-gray-700 p-8">
         <div className=" max-w-[1000px] h-[90%] border-[1px] mx-auto">
           <div className=" flex justify-between h-20 p-4 px-8">
             <div className=" font-bold text-2xl">
@@ -38,11 +41,24 @@ function App() {
               <Search setSearch={(search) => setSearch(search)} />
             </div>
           </div>
-          <div>{/* Table component */}</div>
-          <div>{/* Sort component */}</div>
-          <div>{/* Dept. filter component */}</div>
+          <div className=" grid grid-cols-4 w-full justify-center place-items-center">
+            <div className=" col-span-3">
+              {/* Table component */}
+              <Table obj={obj.data ? obj.data : []} />
+            </div>
+            <div>
+              {/* Sort component */}
+              <Sort sort={sort} setSort={(sort) => setSort(sort)} />
+            </div>
+            <div>
+              {/* Dept. filter component */}
+              <Filter
+                setDepartment={(department) => setDepartment(department)}
+              />
+            </div>
+          </div>
+          <div>{/* Pagination component */}</div>
         </div>
-        <div>{/* Pagination component */}</div>
       </div>
     </>
   );
