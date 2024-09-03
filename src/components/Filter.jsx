@@ -14,10 +14,10 @@ function Filter({ department, setDepartment }) {
   };
   return (
     <div>
-      <h2>Filter By Department: </h2>
+      <h2 className=" font-semibold text-xl">Filter By Department: </h2>
       <div className=" grid grid-cols-3 gap-x-2">
         {dept.map((item) => (
-          <div className=" flex items-center gap-x-1">
+          <div key={item} className=" flex items-center gap-x-1">
             <input
               type="checkbox"
               value={item}

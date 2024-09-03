@@ -19,7 +19,7 @@ function Sort({ sort, setSort }) {
       <select
         defaultValue={sort.sort}
         onChange={onSelectChange}
-        className=" text-center outline-none w-20 rounded-md"
+        className=" text-center outline-none w-28 rounded-md"
       >
         <option value="salary">Salary</option>
         <option value="joining_date">Joining_Date</option>

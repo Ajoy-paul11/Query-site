@@ -4,6 +4,7 @@ import Search from "./components/Search.jsx";
 import Table from "./components/Table.jsx";
 import Sort from "./components/Sort.jsx";
 import Filter from "./components/Filter.jsx";
+import Pagination from "./components/Pagination.jsx";
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
@@ -59,7 +60,14 @@ function App() {
               </div>
             </div>
           </div>
-          <div>{/* Pagination component */}</div>
+          <div>
+            {/* Pagination component */}
+            <Pagination
+              page={page}
+              setPage={(page) => setPage(page)}
+              obj={obj.data ? obj.data : []}
+            />
+          </div>
         </div>
       </div>
     </>
