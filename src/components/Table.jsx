@@ -3,20 +3,20 @@ import React from "react";
 function Table({ obj }) {
   return (
     <div className=" flex flex-col">
-      <div className=" px-6 flex justify-between items-center">
-        <p>Name</p>
-        <p>Age</p>
+      <div className="flex items-center justify-around underline">
+        <p className=" pl-2">Name</p>
+        <p className=" pl-14">Age</p>
         <p>Department</p>
         <p>Salary</p>
-        <p>Joining-Date</p>
+        <p className=" ">Joining-Date</p>
       </div>
-      <div className=" flex gap-x-8">
+      <div className=" flex gap-x-8 justify-evenly">
         <div className=" px-6">
           {obj.map((item) => (
             <>
               <div key={item._id} className="">
-                <div className=" flex justify-start text-center items-center w-full">
-                  <div className=" ">
+                <div className=" flex justify-start text-center items-center w-full gap-y-6">
+                  <div className="">
                     <p>{item.name}</p>
                   </div>
                 </div>
