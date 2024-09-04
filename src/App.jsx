@@ -20,7 +20,7 @@ function App() {
       try {
         const url = `${base_url}?page=${page}&sort=${sort.sort},${sort.order}&department=${department}&search=${search}`;
         const { data } = await axios.get(url);
-        setObj(data);
+        setObj(data.data);
       } catch (error) {
         console.log("Error occurred while getting data", error.message);
       }
@@ -46,7 +46,7 @@ function App() {
             <div className="grid grid-cols-4 w-full grid-rows-2 content-center ">
               <div className=" col-span-3  row-span-2 w-full">
                 {/* Table component */}
-                <Table obj={obj.data ? obj.data : []} />
+                <Table obj={obj.specificEmp ? obj.specificEmp : []} />
               </div>
               <div>
                 {/* Sort component */}
@@ -60,12 +60,12 @@ function App() {
               </div>
             </div>
           </div>
-          <div>
+          <div className=" w-28 mx-auto mt-20 fixed left-[48%] bottom-[16%]">
             {/* Pagination component */}
             <Pagination
               page={page}
               setPage={(page) => setPage(page)}
-              obj={obj.data ? obj.data : []}
+              objCount={obj.specificEmp ? obj.totalDocument : []}
             />
           </div>
         </div>
